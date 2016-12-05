@@ -32,3 +32,10 @@ Même chose pour Composer :
 ```shell
 $ composer --version
 ```
+
+## Installation
+
+Veuillez saisir la commande suivante :
+
+```shell
+$ composer install
