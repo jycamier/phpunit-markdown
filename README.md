@@ -15,7 +15,7 @@ Vous aurez besoin de :
 Afin de voir si votre PhpUnit est fonctionnel, vérifier que vous avez bien toutes les extensions à l'aide de la commande suivante : 
 
 ```shell
-$ php -m | grep 'dom\|json\|pcre\|reflection\|spl\|intl\|phar\|xdebug'
+$ php -m | grep 'dom\|json\|pcre\|reflection\|spl\|intl\|phar\|xdebug\|tokenizer\|xmlwriter'
 ```
 
 Il se peut que **pcre**, **reflection** ou/et **spl** ne s'affiche pas car actuellement intégrer dans le core de php.
