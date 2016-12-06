@@ -11,6 +11,8 @@ Vous aurez besoin de :
 - **XDebug 2.2.1** ou plus ;
 - **phpunit** : https://phpunit.de/manual/current/en/installation.html
 - **composer** : https://getcomposer.org/doc/00-intro.md
+- **node** (v6.9.1 LTS) : https://nodejs.org/en/ 
+- **grunt-cli** (v1.2.0)
 
 Afin de voir si votre PhpUnit est fonctionnel, vérifier que vous avez bien toutes les extensions à l'aide de la commande suivante : 
 
@@ -32,6 +34,13 @@ Même chose pour Composer :
 ```shell
 $ composer --version
 ```
+
+
+Une fois que vous avez installé Node, installer Grunt-cli à l'aide de la commande suivante : 
+```shell
+npm install -g grunt-cli 
+```
+
 
 ## Installation
 
