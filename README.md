@@ -48,3 +48,5 @@ Veuillez saisir la commande suivante :
 
 ```shell
 $ composer install
+$ npm install
+```
