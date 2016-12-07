@@ -2,11 +2,17 @@
     <filter>
         <whitelist>
             <directory>src/MathBundle</directory>
+            <directory>src/PanierBundle</directory>
         </whitelist>
     </filter>
     <testsuites>
         <testsuite name="math">
             <directory>src/MathBundle/tests</directory>
+        </testsuite>
+    </testsuites>
+    <testsuites>
+        <testsuite name="panier">
+            <directory>src/PanierBundle/tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
