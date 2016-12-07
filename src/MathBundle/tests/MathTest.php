@@ -80,8 +80,9 @@ class MathTest extends TestCase
      */
     public function testInitialize($init, $result)
     {
-        $math = new Math(1e+2);
-        self::assertEquals(100, $math->getNumber());
+        $math = new Math($init);
+
+        self::assertEquals($result, $math->getNumber());
     }
 
     /**
