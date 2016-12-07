@@ -51,4 +51,22 @@ class Math
     {
         return $this->number;
     }
+
+    /**
+     * @param int|float $int
+     *
+     * @return $this
+     * @throws \InvalidArgumentException
+     */
+    public function devide($int)
+    {
+        if (0 == $int) {
+            throw new \InvalidArgumentException('Div. by 0');
+        }
+
+        $this->number /= $int;
+
+        return $this;
+    }
 }
+

@@ -22,7 +22,7 @@ class MathTest extends TestCase
             ->plus(27)
             ->plus(23);
 
-        $this->assertEquals(150, $math->getNumber());
+        self::assertEquals(150, $math->getNumber());
     }
 
     /**
@@ -35,7 +35,7 @@ class MathTest extends TestCase
             ->minus(23)
             ->minus(10);
 
-        $this->assertEquals(90, $math->getNumber());
+        self::assertEquals(90, $math->getNumber());
     }
 
     /**
@@ -44,13 +44,13 @@ class MathTest extends TestCase
     public function testInitialize()
     {
         $math = new Math(1e+2);
-        $this->assertEquals(100, $math->getNumber());
+        self::assertEquals(100, $math->getNumber());
 
         $math = new Math(100);
-        $this->assertEquals(100, $math->getNumber());
+        self::assertEquals(100, $math->getNumber());
 
         $math = new Math('100');
-        $this->assertEquals(100, $math->getNumber());
+        self::assertEquals(100, $math->getNumber());
     }
 
     /**
@@ -63,6 +63,18 @@ class MathTest extends TestCase
             ->plus('23')
             ->plus('27');
 
-        $this->assertEquals(150, $math->getNumber());
+        self::assertEquals(150, $math->getNumber());
+    }
+
+
+    public function testDividedBy()
+    {
+        $math = new Math(100);
+        $math->devide(2);
+
+        self::assertEquals(50, $math->getNumber());
+
+//        $math = new Math(100);
+//        $math->devide(0);
     }
 }
