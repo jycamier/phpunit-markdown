@@ -69,4 +69,3 @@ class Math
         return $this;
     }
 }
-

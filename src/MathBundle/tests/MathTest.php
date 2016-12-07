@@ -13,68 +13,121 @@ use PHPUnit\Framework\TestCase;
 class MathTest extends TestCase
 {
     /**
-     * on teste l'addition
+     * @param $init
+     * @param $a
+     * @param $b
+     * @param $result
+     *
+     * @dataProvider additionProvider
      */
-    public function testPlus()
+    public function testPlus($init, $a, $b, $result)
     {
-        $math = new Math(100);
+        $math = new Math($init);
         $math
-            ->plus(27)
-            ->plus(23);
+            ->plus($a)
+            ->plus($b);
 
-        self::assertEquals(150, $math->getNumber());
+        self::assertEquals($result, $math->getNumber());
     }
 
     /**
-     * on teste la soustration
+     * @return array
      */
-    public function testMinus()
+    public function additionProvider()
     {
-        $math = new Math(123);
-        $math
-            ->minus(23)
-            ->minus(10);
-
-        self::assertEquals(90, $math->getNumber());
+        return [
+            'first add with integer' => [100, 27, 23, 150],
+            'second add string' => ['100.000', '27.27', '23.23', '150.50'],
+            'third add and string' => [100, 27, '23', 150],
+        ];
     }
 
     /**
-     * Test d'initialisation
+     * @param $init
+     * @param $a
+     * @param $b
+     * @param $result
+     *
+     * @dataProvider minusProvider
      */
-    public function testInitialize()
+    public function testMinus($init, $a, $b, $result)
+    {
+        $math = new Math($init);
+        $math
+            ->minus($a)
+            ->minus($b);
+
+        self::assertEquals($result, $math->getNumber());
+    }
+
+
+    /**
+     * @return array
+     */
+    public function minusProvider()
+    {
+        return [
+            'first minus with integer' => [123, 23, 10, 90],
+            'minus with string and int' => [123, 23, '10', 90],
+        ];
+    }
+
+    /**
+     * @param $init
+     * @param $result
+     *
+     * @dataProvider initDataProvider
+     */
+    public function testInitialize($init, $result)
     {
         $math = new Math(1e+2);
         self::assertEquals(100, $math->getNumber());
-
-        $math = new Math(100);
-        self::assertEquals(100, $math->getNumber());
-
-        $math = new Math('100');
-        self::assertEquals(100, $math->getNumber());
     }
 
     /**
-     * on teste la soustration
+     * @return array
      */
-    public function testAddString()
+    public function initDataProvider()
     {
-        $math = new Math('1e2');
-        $math
-            ->plus('23')
-            ->plus('27');
-
-        self::assertEquals(150, $math->getNumber());
+        return [
+            'initialization with int' => [100, 100],
+            'initialization with scientific notation' => [1e+2, 100],
+            'initialization with float' => ['100', 100],
+        ];
     }
 
-
-    public function testDividedBy()
+    /**
+     * @param int $init
+     * @param int $value
+     * @param int $result
+     *
+     * @dataProvider divisionDataProvider
+     */
+    public function testDividedBy($init, $value, $result)
     {
-        $math = new Math(100);
-        $math->devide(2);
+        $math = new Math($init);
+        $math->devide($value);
 
-        self::assertEquals(50, $math->getNumber());
+        self::assertEquals($result, $math->getNumber());
+    }
 
-//        $math = new Math(100);
-//        $math->devide(0);
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testDevidedByZero()
+    {
+        $math = new Math(1000);
+        $math->devide(0);
+    }
+
+    /**
+     * @return array
+     */
+    public function divisionDataProvider()
+    {
+        return [
+            'standard division with integer values' => [100, 2, 50],
+            'standard division with string values' => ['100', '2', 50],
+        ];
     }
 }
