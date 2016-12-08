@@ -1,0 +1,12 @@
+<phpunit bootstrap="../../vendor/autoload.php">
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+        </whitelist>
+    </filter>
+    <testsuites>
+        <testsuite name="panier">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
