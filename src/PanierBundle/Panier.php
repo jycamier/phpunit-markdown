@@ -38,7 +38,7 @@ class Panier
     {
         $total = 0;
         foreach ($this->produitPaniers as $produitPanier) {
-            $total += $produitPanier->getProduit()->getPrix() * $produitPanier->getQuantite();
+            $total += $produitPanier->getTotal();
         }
 
         return $total;

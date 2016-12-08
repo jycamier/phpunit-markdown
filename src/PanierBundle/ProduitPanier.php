@@ -47,4 +47,12 @@ class ProduitPanier
     {
         $this->quantite = $quantite;
     }
+
+    /**
+     * @return float
+     */
+    public function getTotal()
+    {
+        return $this->getProduit()->getPrix() * $this->getQuantite();
+    }
 }

@@ -7,41 +7,32 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class ProduitPanierTest
  *
- * @author Jean-Yves Camier <jycamier@clever-age.com>
+ * @package Jycamier\PanierBundle
+ * @author  Jean-Yves Camier <jycamier@clever-age.com>
  */
 class ProduitPanierTest extends TestCase
 {
     /**
-     * on teste si le prix total du panier est toujours le bon
+     * @dataProvider produitDataProvider
      */
-    public function testGetPrice()
+    public function testGetTotal($pu, $quantite, $total)
     {
-        $panier = new Panier();
-        $panier->addProduitPanier($this->getProduitPanier(10, 3));
-        $panier->addProduitPanier($this->getProduitPanier(20, 2));
+        $produitPanier = new ProduitPanier();
+        $produitPanier->setProduit($this->getProduit($pu));
+        $produitPanier->setQuantite($quantite);
 
-        self::assertEquals(70, $panier->getTotal());
+        self::assertEquals($total, $produitPanier->getTotal());
     }
 
     /**
-     * Retourne un mock de ProduitPanier
-     * @param $prix
-     * @param $quantite
-     *
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return array
      */
-    protected function getProduitPanier($prix, $quantite)
+    public function produitDataProvider()
     {
-        $stub = $this->createMock(ProduitPanier::class);
-        $stub
-            ->method('getQuantite')
-            ->willReturn($quantite);
-
-        $stub
-            ->method('getProduit')
-            ->will(self::returnValue($this->getProduit($prix)));
-
-        return $stub;
+        return [
+            '1 pain au chocolat' => [0.15, 1, 0.15],
+            '2 pack de Leffe' => [6.35, 2, 12.70],
+        ];
     }
 
     /**
